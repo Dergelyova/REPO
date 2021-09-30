@@ -111,6 +111,7 @@ switch (true) {
         alert("Доброї ночі");
 }
 
+
 if (now >= 5 && now < 11) {
     alert("Доброго ранку");
 } else if (now >= 11 && now < 17) {
