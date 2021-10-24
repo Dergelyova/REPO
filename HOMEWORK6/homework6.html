@@ -1,0 +1,143 @@
+<!-- *****TASK 1*****  -->
+
+<body>
+    <div id="test">First</div>
+    <script>
+        document.getElementById("test").innerHTML = "Last";
+        //**variant 2**
+        // document.body.firstElementChild.textContent = "Last";
+    </script>
+</body>
+
+
+
+<!--*****TASK 2***** -->
+
+<body>
+    <img class="image" src="dog.jpg">
+    <script>
+        document.querySelector('.image').src = "cat.jpg";
+        alert(document.querySelector('.image').outerHTML);
+    </script>
+</body>
+
+
+
+<!-- *****TASK 3***** -->
+
+<body>
+    <h2>Article header</h2>
+    <div id="text">
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+        <p>Third paragraph</p>
+    </div>
+    <p>Another text</p>
+    <script>
+        let divChildren = document.querySelectorAll('div p');
+        for (let i = 0; i < divChildren.length; i++) {
+            console.log(`Selector text ${i}: ${divChildren[i].innerHTML}`);
+        }
+    </script>
+</body>
+
+
+
+<!-- *****TASK 4***** -->
+
+<body>
+    <ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        //**variant 1**
+        let nodeList = document.querySelectorAll('li');
+        for (let i = 0; i < 3; i++) {
+            alert(nodeList[i].innerHTML);
+            if (i < 2)
+                alert(nodeList[nodeList.length - i - 1].innerHTML);
+        }
+
+        //**variant 2**
+        // let nodeList = document.body.children[0];
+        // let secondNumber = nodeList.children[1]
+        // let fourthNumber = nodeList.children[3];
+        // console.log(nodeList.firstElementChild.innerHTML);
+        // console.log(nodeList.lastElementChild.innerHTML);
+        // console.log(secondNumber.innerHTML);
+        // console.log(fourthNumber.innerHTML);
+        // console.log(secondNumber.nextElementSibling.innerHTML)
+    </script>
+</body>
+
+
+
+<!-- *****TASK 5***** -->
+
+<body>
+    <h1>I'am a big header!!!</h1>
+    <div id="myDiv">
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+        <p>Third paragraph</p>
+        <p>Fourth paragraph</p>
+    </div>
+    <ul id="myList">
+        <li>Make</li>
+        <li>me</li>
+        <li>horizontal!</li>
+    </ul>
+    <span>Make me invisible, please!</span>
+    <script>
+        document.querySelector("h1").style.backgroundColor = "lightgreen";
+        let paragraphs = document.querySelector("div").children;
+        paragraphs[0].style.fontWeight = "bold";
+        paragraphs[1].style.color = "red";
+        paragraphs[2].style.textDecoration = "underline";
+        paragraphs[3].style.fontStyle = "italic";
+        let elem = document.getElementById("myList");
+        let horizontal = elem.children;
+        let textStr = document.createTextNode(`${horizontal[0].innerHTML}${horizontal[1].innerHTML}${horizontal[2].innerHTML}`);
+        elem.replaceChildren();
+        elem.prepend(textStr);
+        document.querySelector("span").style.visibility = "hidden";
+    </script>
+</body>
+
+
+
+<!-- *****TASK 6***** -->
+
+<body>
+    <input type="text" id="input1" value="Text1">
+    <input type="text" id="input2" value="Text2">
+    <script>
+        document.body.children[0].value = prompt("Value for input 1?");
+        document.body.children[1].value = prompt("Value for input 2?");
+        let valueOne = document.body.children[0].value;
+        document.body.children[0].value = document.body.children[1].value;
+        document.body.children[1].value = valueOne;
+    </script>
+</body>
+
+
+
+<!-- *****TASK 7***** -->
+
+<body>
+    <script>
+        let newMain = document.createElement("main");
+        newMain.className = "mainClass check item";
+        document.body.prepend(newMain);
+        let newDiv = document.createElement("div");
+        newDiv.id = "myDiv";
+        newMain.prepend(newDiv);
+        let newP = document.createElement("p");
+        newP.innerHTML = "First paragraph";
+        newDiv.prepend(newP);
+    </script>
+</body>
