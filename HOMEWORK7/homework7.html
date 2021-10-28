@@ -1,0 +1,166 @@
+<!-- *****TASK1***** -->
+
+<body>
+    <script>
+        let newWin = window.open("/", "Learn JavaScript", "width = 300, height = 300");
+        setTimeout(() => newWin.resizeTo(500, 500), 2000);
+        setTimeout(() => newWin.moveTo(200, 200), 4000);
+        setTimeout(() => newWin.close(), 6000);
+    </script>
+</body>
+
+
+<!-- *****TASK2*****-->
+
+<body>
+    <p id='text'>I learning JavaScript events!</p>
+    <div>
+        <button name="button" onclick="changeStyle()">Change style!</button>
+        <script>
+            function changeStyle() {
+                document.querySelector('#text').style.color = "orange";
+                document.querySelector('#text').style.fontSize = "20";
+                document.querySelector('#text').style.fontFamily = "Comic Sans MS";
+            }
+        </script>
+    </div>
+</body>
+
+
+
+<!-- *****TASK3***** -->
+
+<body>
+    <button id="oneclick" value="oneclick">Click to make the page blue</button>
+    <button id="doubleclick" value="doubleclick">Double-click to make the page pink</button>
+    <button id="hold" value="hold">Click and hold to make the page brown</button>
+    <a href="/" id="link">Hover over to make the page yellow</a>
+    <script>
+        document.querySelector('#oneclick').onclick = () => document.body.style.backgroundColor = "blue";
+        document.querySelector('#doubleclick').ondblclick = () => document.body.style.backgroundColor = "pink";
+
+        let itemButton = document.querySelector('#hold');
+        itemButton.addEventListener("mousedown", brownPage);
+        itemButton.addEventListener("mouseup", whitePage);
+
+        let itemLink = document.querySelector('#link');
+        itemLink.addEventListener("mouseover", yellowPage);
+        itemLink.addEventListener("mouseout", whitePage);
+
+
+        function brownPage() {
+            document.body.style.backgroundColor = "brown";
+        }
+
+        function whitePage() {
+            document.body.style.backgroundColor = "white";
+        }
+
+        function yellowPage() {
+            document.body.style.backgroundColor = "yellow";
+        }
+    </script>
+</body>
+
+
+
+<!-- *****TASK4***** -->
+
+<body>
+    <select id="mySelect">
+        <option>Peter</option>
+        <option>John</option>
+        <option>Alise</option>
+        <option> Alex</option>
+        <option>Iren</option>
+        </select>
+    <button onclick="delOption()">Choose and delete</button>
+    <script>
+        function delOption() {
+            var x = document.getElementById("mySelect");
+            x.remove(x.selectedIndex);
+        }
+    </script>
+</body>
+
+
+
+<!-- *****TASK5***** -->
+
+<body>
+    <button id="button">Live button!</button>
+    <script>
+        let liveBut = document.getElementById("button");
+        liveBut.addEventListener('mouseover', () => newText("Mouse on me!"))
+        liveBut.addEventListener('click', () => newText("I was pressed!"))
+        liveBut.addEventListener('mouseout', () => newText("Mouse is not on me!"))
+
+        function newText(a) {
+            let newText = document.createElement('div')
+            newText.innerHTML = `${a}`;
+            liveBut.after(newText);
+        }
+    </script>
+</body>
+
+
+
+<!-- *****TASK6***** -->
+
+<body>
+    <script>
+        let el = document.createElement('p');
+        el.innerHTML = `Width: ${window.innerWidth}, Height: ${window.innerHeight}`;
+        document.body.prepend(el);
+        window.addEventListener('resize', () => el.innerHTML = `Width: ${window.innerWidth}, Height: ${window.innerHeight}`)
+    </script>
+</body>
+
+
+
+<!-- *****TASK7***** -->
+
+<body>
+    <select name="country" id="country">
+        <option value="ger">Germany</option>
+        <option value="usa">USA</option>
+        <option value="ukr">Ukraine</option>
+      </select>
+
+    <select name="cities" id="cities"></select>
+    <p></p>
+    <script>
+        function addCityList(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                let newOpt = new Option(arr[i], `city ${i+1}`);
+                cities.add(newOpt);
+            }
+        }
+
+        function chooseCityList() {
+            cities.innerHTML = "";
+            if (country.value === 'usa') {
+                addCityList(usCities);
+            } else if (country.value === 'ger') {
+                addCityList(gerCities);
+            } else if (country.value === 'ukr') {
+                addCityList(ukrCities);
+            }
+        }
+
+        function textChange() {
+            document.querySelector('p').innerHTML = `${country.options[country.selectedIndex].text}, ${cities.options[cities.selectedIndex].text}`;
+        }
+
+        let usCities = ['New York', 'Chicago', 'Washington', 'Boston'];
+        let gerCities = ['Berlin', 'Hamburg', 'Munich', 'Leipzig'];
+        let ukrCities = ['Kyiv', 'Kharkiv', 'Lviv', 'Odesa'];
+
+        country.addEventListener('change', chooseCityList);
+        country.addEventListener('change', textChange);
+        cities.addEventListener('change', textChange);
+
+        chooseCityList();
+        textChange();
+    </script>
+</body>
