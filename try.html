@@ -1,0 +1,12 @@
+<!-- На HTML-сторінці є посилання <a>. У випадку коли, href починається на https://, потрібно додати посиланню атрибут target="_blank". -->
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <a id="link" href="https://ajax.googleapis"></a>
+    <script>
+        $("#link[href^='https://']").attr('target', "_blank");
+    </script>
+</body>
