@@ -73,7 +73,7 @@ checkEmail('my_ma--il@gmail.com');
 //******************task7*********************
 
 function checkLogin(login) {
-    let regexp = /^[a-zA-Z]([A-Za-z]|(\d+\.\d+)|(\d*))+$/;
+    let regexp = /^(?=.{2,10}$)^[a-zA-Z]([A-Za-z]|(\d+\.\d+)|(\d*))+$/;
     if (regexp.test(login)) {
         console.log(true);
     } else {
