@@ -14,7 +14,7 @@ upperCase('RegExp');
 
 // ******************task2*********************
 function checkEmail(email) {
-    return /^(.+)@(.+)/.test(email);
+    return /^(.+)@.+\..+/.test(email);
 }
 checkEmail("Qmail2@gmail.com");
 
