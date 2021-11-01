@@ -27,14 +27,14 @@ console.log(str.match(regexp));
 
 //******************task4*********************
 
-let regexp = /(\w+) (\w+)/i;
+let regexp = /(\w+)\s(\w+)/i;
 let str = "Java Script";
 console.log(str.replace(regexp, '$2, $1'));
 
 //******************task5*********************
 
 function checkCard(num) {
-    let regexp = /^\d{4}-?\d{4}-?\d{4}-?\d{4}$/;
+    let regexp = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
     if (!regexp.test(num)) {
         console.log("Card number is not valid");
     } else {
@@ -47,7 +47,7 @@ checkCard("9999-9999-9999-9999");
 checkCard("v999-9999-9999-9999");
 // Card number is not valid
 checkCard("9999999999999999");
-// Card number is valid
+// Card number is not valid
 
 //******************task6*********************
 
