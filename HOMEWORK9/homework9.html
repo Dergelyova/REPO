@@ -1,12 +1,78 @@
-TASK1
-
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
+
+<!-- ******TASK1****** -->
 
 <body>
     <a id="link" href="https://ajax.googleapis"></a>
     <script>
         $("#link[href^='https://']").attr('target', "_blank");
     </script>
+</body>
+
+
+<!-- ******TASK2****** -->
+
+<body>
+    <h2 class="head">header1</h2>
+    <h2 class="head">header2 <span class="inner">inner elem1</span></h2>
+    <h2>header3</h2>
+    <h2 class="head">header4<span>inner elem2</span></h2>
+    <h2>header5</h2>
+    <script>
+        $("h2.head").css("background-color", "green");
+        $("h2.head>.inner").css("font-size", "35px");
+    </script>
+</body>
+
+
+<!-- *****TASK3***** -->
+
+<body>
+    <h3>header1</h3>
+    <div>text1</div>
+    <!-- розмістили додатковий div для перевірки, що обрано лише div безпосередньо після h3(за умовою) -->
+    <div>try</div>
+    <h3>header2</h3>
+    <div>text2</div>
+    <script>
+        let $el = $("h3").next('div');
+        $("h3:eq(0)").before($el.eq(0));
+        $("h3:eq(1)").before($el.eq(1));
+    </script>
+</body>
+
+<!-- *****TASK4***** -->
+
+<body>
+    <div id="checkbox-list">
+        <h3>Please, choose 3 options</h3>
+        <input type="checkbox" id="first">
+        <label for="first">1</label>
+        <input type="checkbox" id="second">
+        <label for="second">2</label>
+        <input type="checkbox" id="third">
+        <label for="third">3</label>
+        <input type="checkbox" id="fourth">
+        <label for="fourth">4</label>
+        <input type="checkbox" id="fifth">
+        <label for="fifth">5</label>
+        <input type="checkbox" id="sixth">
+        <label for="sixth">6</label>
+    </div>
+    <style>
+        label {
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        $("input").click(function() {
+            if ($('input:checked').length >= 3) {
+                $("input").attr("disabled", "true");
+            }
+        });
+    </script>
+
 </body>
