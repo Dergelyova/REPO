@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <button id='vote'>Vote!</button>
+</body>
+<script type="text/javascript">
+    $("#vote").click(function() {
+        $.ajax({
+            type: "POST",
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            success: function(data) {
+                $("#vote")[0].innerText = "Your vote is accepted: " + new Date();
+            }
+        });
+    });
+</script>
+
+
+<!-- <body>
+    <button id='download'>Download books</button>
+    <ul>
+    </ul>
+</body>
+<script type="text/javascript">
+    $("#download").click(function() {
+        document.querySelector("button").style.visibility = 'hidden';
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://localhost:8080/books', true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                alert('Error ' + xhr.status + ': ' + xhr.statusText);
+            } else {
+                let data = JSON.parse(xhr.responseText);
+                console.log(data[0].author)
+                for (let i = 0; i < data.length; i++) {
+                    let newEl = document.createElement("li");
+                    newEl.innerHTML = data[i].author;
+                    document.querySelector("ul").append(newEl);
+                }
+            }
+        }
+        xhr.send();
+    });
+</script> -->
+
+</html>
